@@ -17,6 +17,7 @@ public class Proveedor {
         this.cif = cif;
         this.nombre = nombre;
     }
+
     //getter
     public int getId() {
         return id;
@@ -70,7 +71,7 @@ public class Proveedor {
     private String provincia;
 
 
-//método toString cadena de txt con toda la info
+    //método toString cadena de txt con toda la info
     @Override
     public String toString() {
         return "Proveedor{" +
@@ -79,7 +80,7 @@ public class Proveedor {
                 ", nombre='" + nombre + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", localidad='" + localidad + '\'' +
-                ", provincia='" + provincia + '\'' +
+                ", provincia='" + provincia + '\'' + "\n" +
                 '}';
     }
 }

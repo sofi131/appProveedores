@@ -12,33 +12,63 @@ public class AlmacenController {
     private List<Pieza> piezaList;
     private List<Pedido> pedidoList;
 
-//vacío -> constructor almacén
+    //vacío -> constructor almacén
     public AlmacenController() {
-        proveedorList=new ArrayList<>();
-        pedidoList=new ArrayList<>();
-        piezaList=new ArrayList<>();
+        proveedorList = new ArrayList<>();
+        pedidoList = new ArrayList<>();
+        piezaList = new ArrayList<>();
     }
 
 
-    //creamos obj tipo proveedor
-    public boolean nuevoProveedor(String cif, String nombre, String direccion, String localidad, String provincia){
-       Proveedor proveedor=new Proveedor(cif, nombre);
-       proveedor.setDireccion(direccion);
-       proveedor.setLocalidad(localidad);
-       proveedor.setProvincia(provincia);
-       //para que devuelva un booleano
-       return proveedorList.add(proveedor);
-        //return true;
+    //creamos obj tipo proveedor -> para añadir nuevos proveedores
+    public boolean nuevoProveedor(String cif, String nombre, String direccion, String localidad, String provincia) {
+        Proveedor proveedor = new Proveedor(cif, nombre);
+        proveedor.setDireccion(direccion);
+        proveedor.setLocalidad(localidad);
+        proveedor.setProvincia(provincia);
+        //para que devuelva un booleano
+
+        //proveedorList.remove(proveedor);
+        return proveedorList.add(proveedor);
 
     }
+
+    //prueba borrar proveedor
+    public boolean borrarProveedor(String cif) {
+        //recorres lista para buscar proveedor
+        for (Proveedor proveedor : proveedorList) {
+            if (proveedor.getCif().equals(cif)) {
+                proveedorList.remove(proveedor);
+                return true;
+            }
+
+        }
+        return false;
+    }
+    //otra versión
+//    public boolean borrarProveedor(String cif) {
+//        //recorres lista para buscar proveedor
+//        for (int i = 0; i<proveedorList.size();i++) {
+//            if (cif.equals.(proveedorList.get(i).getCif()))) {
+//                proveedorList.remove(i);
+//                //proveedorList.remove(proveedorList.get(i));
+//                return true;
+//            }
+//
+//        }
+//        return false;
+//    }
+
     //para pintar en main - n salto de línea
     @Override
     public String toString() {
-        return "AlmacenController{" + "\n"+
-                "proveedorList=" + proveedorList + "\n"+
-                ", piezaList=" + piezaList + "\n"+
-                ", pedidoList=" + pedidoList + "\n"+
+        return "AlmacenController{" + "\n" +
+                "proveedorList=" + proveedorList + "\n" +
+                ", piezaList=" + piezaList + "\n" +
+                ", pedidoList=" + pedidoList + "\n" +
                 '}';
     }
 
 }
+
+
