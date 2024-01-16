@@ -91,6 +91,18 @@ public class AlmacenController {
 //        return false;
 //    }
 
+//    Otra manera
+//
+//    public boolean editarNombreProveedor(String cif, String nombre){
+//
+//        for(Proveedor proveedor : proveedorList){
+//            if(cif.equals(proveedor.getCif())){
+//                proveedor.setNombre(nombre);
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
     //para pintar en main - n salto de línea
     @Override
     public String toString() {

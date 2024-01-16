@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b3b04c2-7e0a-4ea6-9dbe-69d5e7c9593a" name="Changes" comment="CRUD del proveedor (AlmacenController y main).">
+    <list default="true" id="6b3b04c2-7e0a-4ea6-9dbe-69d5e7c9593a" name="Changes" comment="Comentarios y demás en ActualizarProveedor.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ceica/Controladores/AlmacenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Controladores/AlmacenController.java" afterDir="false" />
     </list>
@@ -130,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705429765663</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Comentarios y demás en ActualizarProveedor.">
+      <option name="closed" value="true" />
+      <created>1705430751944</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1705430751944</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -140,6 +148,7 @@
     <MESSAGE value="Creamos AlmacenController" />
     <MESSAGE value="Comentarios" />
     <MESSAGE value="CRUD del proveedor (AlmacenController y main)." />
-    <option name="LAST_COMMIT_MESSAGE" value="CRUD del proveedor (AlmacenController y main)." />
+    <MESSAGE value="Comentarios y demás en ActualizarProveedor." />
+    <option name="LAST_COMMIT_MESSAGE" value="Comentarios y demás en ActualizarProveedor." />
   </component>
 </project>
