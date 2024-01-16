@@ -45,18 +45,22 @@ public class AlmacenController {
         }
         return false;
     }
-    //otra versión
-//    public boolean borrarProveedor(String cif) {
+   //otra versión
+//    public boolean borrarProveedor(String cif){
 //        //recorres lista para buscar proveedor
-//        for (int i = 0; i<proveedorList.size();i++) {
-//            if (cif.equals.(proveedorList.get(i).getCif()))) {
+//        for (int i = 0; i < proveedorList.size(); i++) {
+//            if(cif.equals(proveedorList.get(i).getCif())){
 //                proveedorList.remove(i);
 //                //proveedorList.remove(proveedorList.get(i));
 //                return true;
 //            }
-//
 //        }
 //        return false;
+//    }
+
+    //otro - landa
+//    public boolean borrarProveedor(String cif){
+//        return proveedorList.removeIf(proveedor -> cif.equals(proveedor.getCif()));
 //    }
 
     //para pintar en main - n salto de línea
