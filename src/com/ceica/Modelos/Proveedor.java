@@ -7,6 +7,41 @@ public class Proveedor {
     private String direccion;
     private String localidad;
 
+    //vacío
+    public Proveedor() {
+
+    }
+
+    //2 valores
+    public Proveedor(java.lang.String cif, java.lang.String nombre) {
+        this.cif = cif;
+        this.nombre = nombre;
+    }
+    //getter
+    public int getId() {
+        return id;
+    }
+
+    public java.lang.String getCif() {
+        return cif;
+    }
+
+    public java.lang.String getNombre() {
+        return nombre;
+    }
+
+    public java.lang.String getDireccion() {
+        return direccion;
+    }
+
+    public java.lang.String getLocalidad() {
+        return localidad;
+    }
+
+    public java.lang.String getProvincia() {
+        return provincia;
+    }
+
     //setter
     public void setId(int id) {
         this.id = id;
@@ -33,40 +68,8 @@ public class Proveedor {
     }
 
     private String provincia;
-//vacío
-    public Proveedor() {
 
-    }
 
-    //2 valores
-    public Proveedor(java.lang.String cif, java.lang.String nombre) {
-        this.cif = cif;
-        this.nombre = nombre;
-    }
-//getter
-    public int getId() {
-        return id;
-    }
-
-    public java.lang.String getCif() {
-        return cif;
-    }
-
-    public java.lang.String getNombre() {
-        return nombre;
-    }
-
-    public java.lang.String getDireccion() {
-        return direccion;
-    }
-
-    public java.lang.String getLocalidad() {
-        return localidad;
-    }
-
-    public java.lang.String getProvincia() {
-        return provincia;
-    }
 //método toString cadena de txt con toda la info
     @Override
     public String toString() {
