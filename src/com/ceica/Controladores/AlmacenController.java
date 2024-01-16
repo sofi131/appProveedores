@@ -45,7 +45,7 @@ public class AlmacenController {
         //si no se encuentra al proveedor
         return false;
     }
-   //otra versión
+   //otra versión de borrarProveedor
 //    public boolean borrarProveedor(String cif){
 //        //recorres lista para buscar proveedor
 //        for (int i = 0; i < proveedorList.size(); i++) {
@@ -58,14 +58,14 @@ public class AlmacenController {
 //        return false;
 //    }
 
-    //otro - función landa -> funciones flecha // si eso es igual es true sino false
+    //otra versión con función landa -> funciones flecha // si "eso" es igual es true sino false
 //    public boolean borrarProveedor(String cif){
 //        return proveedorList.removeIf(proveedor -> cif.equals(proveedor.getCif()));
 //    }
 
     //actualizar - modificar el proveedor
     public boolean actualizarProveedor(String cif, String nombre, String direccion, String localidad, String provincia){
-        //busca el proveedor en la lista
+        //busca el proveedor en la lista (for each) clase variable:lista proveedor
         for (Proveedor proveedor : proveedorList) {
             if (proveedor.getCif().equals(cif)){
                 //proveedor.setCif(cif);
@@ -79,6 +79,17 @@ public class AlmacenController {
         //si no se encontró
           return false;
     }
+//otro modo de ActualizarProveedor (pero en este caso solo modifica el nombre)
+//    public boolean editarNombreProveedor(String cif, String nombre){
+//        for (int i = 0; i < proveedorList.size(); i++) {
+//            if(cif.equals(proveedorList.get(i).getCif())){
+//                proveedorList.get(i).setNombre(nombre);
+//                return true;
+
+//            }
+//        }
+//        return false;
+//    }
 
     //para pintar en main - n salto de línea
     @Override
