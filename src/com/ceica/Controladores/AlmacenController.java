@@ -14,6 +14,9 @@ public class AlmacenController {
     private List<Categoria> categorias;
 
 
+    /**
+     * Listas dentro del AlmacénController
+     */
     //vacío -> constructor almacén que vamos llenando
     public AlmacenController() {
         proveedorList = new ArrayList<>();
@@ -25,6 +28,14 @@ public class AlmacenController {
         categorias.add(new Categoria(3, "grande"));
     }
 
+    /**
+     * @param cif cif
+     * @param nombre nombre
+     * @param direccion dirección
+     * @param localidad localidad
+     * @param provincia provincia
+     * @return Un nuevo proveedor
+     */
     //----------------------------------------nuevoProveedor--------------------------------------------
     //creamos obj tipo proveedor -> para añadir nuevos proveedores
     public boolean nuevoProveedor(String cif, String nombre, String direccion, String localidad, String provincia) {
@@ -39,6 +50,10 @@ public class AlmacenController {
 
     }
 
+    /**
+     * @param cif cif
+     * @return Borra el proveedor
+     */
     //prueba -------------borrar proveedor----------------- - MI VERSIÓN
 //    public boolean borrarProveedor(String cif) {
 //        //recorres lista para buscar proveedor
@@ -73,6 +88,11 @@ public class AlmacenController {
 //        return proveedorList.removeIf(proveedor -> cif.equals(proveedor.getCif()));
 //    }
 
+    /**
+     * @param cif cif
+     * @param nombre nombre
+     * @return Datos del proveedor editados
+     */
     //-------------------actualizar--------------- modificar el proveedor MI VERSIÓN - lo edita tó
 //    public boolean actualizarProveedor(String cif, String nombre, String direccion, String localidad, String provincia){
 //        //busca el proveedor en la lista (for each) clase variable:lista proveedor
@@ -165,6 +185,13 @@ public class AlmacenController {
 //    }
 //----------------------------CRUD de piezas-------------------------------------
 
+    /**
+     * @param nombre nombre pieza
+     * @param color color pieza
+     * @param precio precio pieza
+     * @param idcategoria categoría pieza
+     * @return Una nueva pieza
+     */
     //alta, editar, eliminar
 //---------------------------nueva pieza y categorías--------------------------------
     public boolean nuevaPieza(String nombre, Color color, Double precio, int idcategoria) {
@@ -175,12 +202,21 @@ public class AlmacenController {
         return true;
     }
 
+    /**
+     * @param id id de la categoría de la pieza
+     * @return categoría de la pìeza
+     */
     private Categoria getCategoriaById(int id) {
         return categorias.stream()
                 .filter(categoria -> categoria.getId() == id)
                 .findFirst().get();
     }
 
+    /**
+     * @param id id del precio de la pieza
+     * @param precio precio de la pieza
+     * @return precio editado
+     */
     //-------------------------------borrar pieza----------------------------------
 //    public boolean borrarPieza(String cif) {
 //        return piezaList.removeIf(pieza -> cif.equals(pieza.getCif()));
@@ -201,6 +237,12 @@ public class AlmacenController {
 //        return false;
     }
 
+    /**
+     * @param cif cif
+     * @param idPieza id de la pieza
+     * @param cantidad nº de piezas
+     * @return Que el pedido haya sido creado o que haya sido un error
+     */
     //---------------------------------------pedidos------------------------------------------------
     public String nuevoPedido(String cif, int idPieza, int cantidad) {
         //Pedido pedido = new Pedido(); no hace falta
@@ -221,6 +263,10 @@ public class AlmacenController {
         }
     }
 
+    /**
+     * @param id id pieza
+     * @return pieza
+     */
     //otra manera de hacer el for (la de antes)
     private Pieza getPiezaByID(int id) {
         for (int i = 0; i < piezaList.size(); i++) {
@@ -231,6 +277,10 @@ public class AlmacenController {
         return null;
     }
 
+    /**
+     * @param cif cif proveedor
+     * @return proveedor o no
+     */
     private Proveedor getProveedorByCIF(String cif) {
         for (Proveedor p : proveedorList) {
             if (cif.equals(p.getCif())) {
@@ -241,6 +291,10 @@ public class AlmacenController {
         return null;
     }
 
+    /**
+     * @param idPieza id de la pieza
+     * @return ver si hay los pedidos correspondientes de la pieza o no
+     */
     public String getPedidosByPieza(int idPieza){
         List<Pedido> pedidosByPieza=new ArrayList<>();
         for (Pedido pedido : pedidoList){
@@ -255,6 +309,10 @@ public class AlmacenController {
         }
     }
 
+    /**
+     * @param cif cif del proveedor
+     * @return ver si hay pedidos de un proveedor o no
+     */
     public String getPedidosByProveedor(String cif){
         List<Pedido> pedidosByProveedor = new ArrayList<>();
         for (Pedido pedido : pedidoList){
@@ -268,6 +326,10 @@ public class AlmacenController {
             return "No hay pedidos de esta proveedor";
         }
     }
+
+    /**
+     * @return proveedores, piezas y pedidos
+     */
     //----------------------------------------------toString general---------------------------
     //para pintar en main - n salto de línea
     @Override
