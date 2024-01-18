@@ -241,6 +241,33 @@ public class AlmacenController {
         return null;
     }
 
+    public String getPedidosByPieza(int idPieza){
+        List<Pedido> pedidosByPieza=new ArrayList<>();
+        for (Pedido pedido : pedidoList){
+            if(pedido.getPieza().getId()==idPieza){
+                pedidosByPieza.add(pedido);
+            }
+        }
+        if(pedidosByPieza.size()>0){
+            return pedidosByPieza.toString();
+        }else{
+            return "No hay pedidos de esta pieza";
+        }
+    }
+
+    public String getPedidosByProveedor(String cif){
+        List<Pedido> pedidosByProveedor = new ArrayList<>();
+        for (Pedido pedido : pedidoList){
+            if(pedido.getProveedor().getCif().equals(cif)){
+                pedidosByProveedor.add(pedido);
+            }
+        }
+        if(pedidosByProveedor.size()>0){
+            return pedidosByProveedor.toString();
+        }else{
+            return "No hay pedidos de esta proveedor";
+        }
+    }
     //----------------------------------------------toString general---------------------------
     //para pintar en main - n salto de línea
     @Override

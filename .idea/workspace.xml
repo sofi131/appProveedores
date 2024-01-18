@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b3b04c2-7e0a-4ea6-9dbe-69d5e7c9593a" name="Changes" comment="AlmacenController -&gt; Crear piezas y editar precios pieza.">
-      <change afterPath="$PROJECT_DIR$/src/com/ceica/Modelos/Color.java" afterDir="false" />
+    <list default="true" id="6b3b04c2-7e0a-4ea6-9dbe-69d5e7c9593a" name="Changes" comment="Método CrearPedido.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ceica/Controladores/AlmacenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Controladores/AlmacenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ceica/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ceica/Modelos/Pieza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Modelos/Pieza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ceica/Modelos/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Modelos/Pedido.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705594992742</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Método CrearPedido.">
+      <option name="closed" value="true" />
+      <created>1705600016118</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1705600016118</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -171,6 +178,7 @@
     <MESSAGE value="Comentarios y demás en ActualizarProveedor." />
     <MESSAGE value="Comentarios y pruebas." />
     <MESSAGE value="AlmacenController -&gt; Crear piezas y editar precios pieza." />
-    <option name="LAST_COMMIT_MESSAGE" value="AlmacenController -&gt; Crear piezas y editar precios pieza." />
+    <MESSAGE value="Método CrearPedido." />
+    <option name="LAST_COMMIT_MESSAGE" value="Método CrearPedido." />
   </component>
 </project>

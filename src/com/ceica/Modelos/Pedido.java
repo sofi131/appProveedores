@@ -11,45 +11,60 @@ public class Pedido {
 //vacío
     public Pedido() {
     }
-//pedido dos
+
     public Pedido(Proveedor proveedor, Pieza pieza) {
         this.proveedor = proveedor;
         this.pieza = pieza;
     }
-
-    //getter
-
+//getters y setters
     public int getId() {
         return id;
     }
 
-    public LocalDate getFecha() {
-        return fecha;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    //setter
-
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
     }
 
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
     }
 
+    public Pieza getPieza() {
+        return pieza;
+    }
+
     public void setPieza(Pieza pieza) {
         this.pieza = pieza;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
     }
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
+    public int getCantidad() {
+        return cantidad;
+    }
+
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+//toString
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "id=" + id +
+                ", proveedor=" + proveedor +
+                ", pieza=" + pieza +
+                ", fecha=" + fecha +
+                ", cantidad=" + cantidad +
+                '}';
     }
 }
