@@ -1,5 +1,6 @@
 package com.ceica.Controladores;
 
+import com.ceica.Modelos.Categoria;
 import com.ceica.Modelos.Pedido;
 import com.ceica.Modelos.Pieza;
 import com.ceica.Modelos.Proveedor;
@@ -8,18 +9,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AlmacenController {
+   // public static final Enum={"Verde","Azul","Rojo"};
     private List<Proveedor> proveedorList;
     private List<Pieza> piezaList;
     private List<Pedido> pedidoList;
+    private List<Categoria> categorias;
 
-    //vacío -> constructor almacén
+
+    //vacío -> constructor almacén que vamos llenando
     public AlmacenController() {
         proveedorList = new ArrayList<>();
         pedidoList = new ArrayList<>();
         piezaList = new ArrayList<>();
+        categorias = new ArrayList<>();
+        categorias.add(new Categoria(1,"pequeño"));
+        categorias.add(new Categoria(2,"mediano"));
+        categorias.add(new Categoria(3,"grande"));
     }
 
-
+//----------------------------------------nuevoProveedor--------------------------------------------
     //creamos obj tipo proveedor -> para añadir nuevos proveedores
     public boolean nuevoProveedor(String cif, String nombre, String direccion, String localidad, String provincia) {
         Proveedor proveedor = new Proveedor(cif, nombre);
@@ -33,19 +41,23 @@ public class AlmacenController {
 
     }
 
-    //prueba borrar proveedor
+    //prueba -------------borrar proveedor----------------- - MI VERSIÓN
+//    public boolean borrarProveedor(String cif) {
+//        //recorres lista para buscar proveedor
+//        for (Proveedor proveedor : proveedorList) {
+//            if (proveedor.getCif().equals(cif)) {
+//                proveedorList.remove(proveedor);
+//                return true;
+//            }
+//        }
+//        //si no se encuentra al proveedor
+//        return false;
+//    }
+    //-------------------------------borrarProveedor--------------------------------------
     public boolean borrarProveedor(String cif) {
-        //recorres lista para buscar proveedor
-        for (Proveedor proveedor : proveedorList) {
-            if (proveedor.getCif().equals(cif)) {
-                proveedorList.remove(proveedor);
-                return true;
-            }
-        }
-        //si no se encuentra al proveedor
-        return false;
+        return proveedorList.removeIf(proveedor -> cif.equals(proveedor.getCif()));
     }
-   //otra versión de borrarProveedor
+    //otra versión de borrarProveedor
 //    public boolean borrarProveedor(String cif){
 //        //recorres lista para buscar proveedor
 //        for (int i = 0; i < proveedorList.size(); i++) {
@@ -63,22 +75,42 @@ public class AlmacenController {
 //        return proveedorList.removeIf(proveedor -> cif.equals(proveedor.getCif()));
 //    }
 
-    //actualizar - modificar el proveedor
-    public boolean actualizarProveedor(String cif, String nombre, String direccion, String localidad, String provincia){
-        //busca el proveedor en la lista (for each) clase variable:lista proveedor
-        for (Proveedor proveedor : proveedorList) {
-            if (proveedor.getCif().equals(cif)){
-                //proveedor.setCif(cif);
-                proveedor.setNombre(nombre);
-                proveedor.setDireccion(direccion);
-                proveedor.setLocalidad(localidad);
-                proveedor.setProvincia(provincia);
+    //-------------------actualizar--------------- modificar el proveedor MI VERSIÓN - lo edita tó
+//    public boolean actualizarProveedor(String cif, String nombre, String direccion, String localidad, String provincia){
+//        //busca el proveedor en la lista (for each) clase variable:lista proveedor
+//        for (Proveedor proveedor : proveedorList) {
+//            if (proveedor.getCif().equals(cif)){
+//                //proveedor.setCif(cif);
+//                proveedor.setNombre(nombre);
+//                proveedor.setDireccion(direccion);
+//                proveedor.setLocalidad(localidad);
+//                proveedor.setProvincia(provincia);
+//                return true;
+//            }
+//        }
+//        //si no se encontró
+//          return false;
+//    }
+    //-------------------------------------editarNombreProveedor----------------------------------
+    public boolean editarNombreProveedor(String cif, String nombre) {
+        /*
+        for (int i = 0; i < proveedorList.size(); i++) {
+            if(cif.equals(proveedorList.get(i).getCif())){
+                proveedorList.get(i).setNombre(nombre);
                 return true;
             }
         }
-        //si no se encontró
-          return false;
+        return false;
+         */
+        for (Proveedor proveedor : proveedorList) {
+            if (cif.equals(proveedor.getCif())) {
+                proveedor.setNombre(nombre);
+                return true;
+            }
+        }
+        return false;
     }
+    //-------------------------ActualizarProveedor--------------------------------
 //otro modo de ActualizarProveedor (pero en este caso solo modifica el nombre)
 //    public boolean editarNombreProveedor(String cif, String nombre){
 //        for (int i = 0; i < proveedorList.size(); i++) {
@@ -90,7 +122,7 @@ public class AlmacenController {
 //        }
 //        return false;
 //    }
-
+//--------------------editarNombreProveedor--------------------------------------------
 //    Otra manera
 //
 //    public boolean editarNombreProveedor(String cif, String nombre){
@@ -103,6 +135,73 @@ public class AlmacenController {
 //        }
 //        return false;
 //    }
+// ------------------------Prueba con map------------------------------------------
+//    public boolean editarNombreProveedor(String cif, String nombre){
+//        /*
+//        for (int i = 0; i < proveedorList.size(); i++) {
+//            if(cif.equals(proveedorList.get(i).getCif())){
+//                proveedorList.get(i).setNombre(nombre);
+//                return true;
+//            }
+//        }
+//        return false;
+//         */
+//        /*
+//        for(Proveedor proveedor : proveedorList){
+//            if(cif.equals(proveedor.getCif())){
+//                proveedor.setNombre(nombre);
+//                return true;
+//            }
+//        }
+//        return false;
+//         */
+//        proveedorList.stream()
+//                .filter(p->cif.equals(p.getCif()))
+//                .findFirst()
+//                .map(p -> {
+//                    p.setNombre(nombre);
+//                    return true;
+//                })
+//                .orElse(false);
+//        return false;
+//    }
+//----------------------------CRUD de piezas-------------------------------------
+
+    //alta, editar, eliminar
+//---------------------------nueva pieza y categorías--------------------------------
+    public boolean nuevaPieza(String nombre, String color, Double precio, int idcategoria) {
+        Pieza pieza = new Pieza(nombre, color, precio);
+        pieza.setCategoria(getCategoriaById(idcategoria));
+        piezaList.add(pieza);
+//
+        return true;
+    }
+
+    private Categoria getCategoriaById(int id){
+        return categorias.stream()
+                .filter(categoria -> categoria.getId()==id)
+                .findFirst().get();
+    }
+
+//
+//    //-------------------------------borrar pieza----------------------------------
+//    public boolean borrarPieza(String cif) {
+//        return piezaList.removeIf(pieza -> cif.equals(pieza.getCif()));
+//    }
+//
+//    //-------------------------------editar precio pieza-----------------------------------
+    public boolean editarPrecioPieza(int id,Double precio) {
+        return piezaList.stream()
+                .filter(pieza -> pieza.getId()==id)
+                .findFirst()
+                .map(pieza -> {
+                    pieza.setPrecio(precio);
+
+               return true;})
+            .orElse(false);
+//        }
+//        return false;
+    }
     //para pintar en main - n salto de línea
     @Override
     public String toString() {
@@ -114,5 +213,4 @@ public class AlmacenController {
     }
 
 }
-
 

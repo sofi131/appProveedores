@@ -23,23 +23,23 @@ public class Proveedor {
         return id;
     }
 
-    public java.lang.String getCif() {
+    public String getCif() {
         return cif;
     }
 
-    public java.lang.String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public java.lang.String getDireccion() {
+    public String getDireccion() {
         return direccion;
     }
 
-    public java.lang.String getLocalidad() {
+    public String getLocalidad() {
         return localidad;
     }
 
-    public java.lang.String getProvincia() {
+    public String getProvincia() {
         return provincia;
     }
 
@@ -48,23 +48,23 @@ public class Proveedor {
         this.id = id;
     }
 
-    public void setCif(java.lang.String cif) {
+    public void setCif(String cif) {
         this.cif = cif;
     }
 
-    public void setNombre(java.lang.String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public void setDireccion(java.lang.String direccion) {
+    public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
-    public void setLocalidad(java.lang.String localidad) {
+    public void setLocalidad(String localidad) {
         this.localidad = localidad;
     }
 
-    public void setProvincia(java.lang.String provincia) {
+    public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
 
