@@ -2,7 +2,7 @@ package com.ceica.Modelos;
 
 public class Pieza {
     //nuevo
-    private static int idPieza=0;
+    private static int idPieza = 0;
     private int id;
     private String nombre;
     private String color;
@@ -11,12 +11,13 @@ public class Pieza {
 
     public Pieza(String nombre, String color, Double precio) {
         //incrementa en 1
-        this.id=idPieza++;
+        this.id = idPieza++;
         this.nombre = nombre;
         this.color = color;
         this.precio = precio;
     }
-//------------------------------------------getter-------------------------------------------
+
+    //------------------------------------------getter-------------------------------------------
     public int getId() {
         return id;
     }
@@ -36,7 +37,8 @@ public class Pieza {
     public Categoria getCategoria() {
         return categoria;
     }
-//------------------------------------setter-----------------------------
+
+    //------------------------------------setter-----------------------------
     public void setId(int id) {
         this.id = id;
     }
@@ -60,12 +62,12 @@ public class Pieza {
 
     @Override
     public String toString() {
-        return "Pieza{" +
+        return "Pieza\n" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", color='" + color + '\'' +
                 ", precio=" + precio +
                 ", categoria=" + categoria +
-                '}';
+                '}' + "\n";
     }
 }
