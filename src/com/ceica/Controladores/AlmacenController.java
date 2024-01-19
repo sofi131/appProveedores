@@ -29,8 +29,8 @@ public class AlmacenController {
     }
 
     /**
-     * @param cif cif
-     * @param nombre nombre
+     * @param cif       cif
+     * @param nombre    nombre
      * @param direccion dirección
      * @param localidad localidad
      * @param provincia provincia
@@ -89,7 +89,7 @@ public class AlmacenController {
 //    }
 
     /**
-     * @param cif cif
+     * @param cif    cif
      * @param nombre nombre
      * @return Datos del proveedor editados
      */
@@ -186,9 +186,9 @@ public class AlmacenController {
 //----------------------------CRUD de piezas-------------------------------------
 
     /**
-     * @param nombre nombre pieza
-     * @param color color pieza
-     * @param precio precio pieza
+     * @param nombre      nombre pieza
+     * @param color       color pieza
+     * @param precio      precio pieza
      * @param idcategoria categoría pieza
      * @return Una nueva pieza
      */
@@ -213,7 +213,7 @@ public class AlmacenController {
     }
 
     /**
-     * @param id id del precio de la pieza
+     * @param id     id del precio de la pieza
      * @param precio precio de la pieza
      * @return precio editado
      */
@@ -237,9 +237,10 @@ public class AlmacenController {
 //        return false;
     }
 //--------------------------------------------CRUD PEDIDOS-------------------------------------
+
     /**
-     * @param cif cif
-     * @param idPieza id de la pieza
+     * @param cif      cif
+     * @param idPieza  id de la pieza
      * @param cantidad nº de piezas
      * @return Que el pedido haya sido creado o que haya sido un error
      */
@@ -295,16 +296,16 @@ public class AlmacenController {
      * @param idPieza id de la pieza
      * @return ver si hay los pedidos correspondientes de la pieza o no
      */
-    public String getPedidosByPieza(int idPieza){
-        List<Pedido> pedidosByPieza=new ArrayList<>();
-        for (Pedido pedido : pedidoList){
-            if(pedido.getPieza().getId()==idPieza){
+    public String getPedidosByPieza(int idPieza) {
+        List<Pedido> pedidosByPieza = new ArrayList<>();
+        for (Pedido pedido : pedidoList) {
+            if (pedido.getPieza().getId() == idPieza) {
                 pedidosByPieza.add(pedido);
             }
         }
-        if(pedidosByPieza.size()>0){
+        if (pedidosByPieza.size() > 0) {
             return pedidosByPieza.toString();
-        }else{
+        } else {
             return "No hay pedidos de esta pieza";
         }
     }
@@ -313,18 +314,50 @@ public class AlmacenController {
      * @param cif cif del proveedor
      * @return ver si hay pedidos de un proveedor o no
      */
-    public String getPedidosByProveedor(String cif){
+    public String getPedidosByProveedor(String cif) {
         List<Pedido> pedidosByProveedor = new ArrayList<>();
-        for (Pedido pedido : pedidoList){
-            if(pedido.getProveedor().getCif().equals(cif)){
+        for (Pedido pedido : pedidoList) {
+            if (pedido.getProveedor().getCif().equals(cif)) {
                 pedidosByProveedor.add(pedido);
             }
         }
-        if(pedidosByProveedor.size()>0){
+        if (pedidosByProveedor.size() > 0) {
             return pedidosByProveedor.toString();
-        }else{
+        } else {
             return "No hay pedidos de esta proveedor";
         }
+    }
+
+    //------------------------------Submenú parte proveedores------------------------
+    public String verProveedores() {
+        return proveedorList.toString();
+    }
+
+    public String nuevoProveedor(String cif) {
+        return proveedorList.toString();
+    }
+//---------------------------------------editarProveedor-----------------------------
+    public void editarProveedor(String cif, String nombre, String direccion, String localidad, String provincia) {
+        for (Proveedor proveedor : proveedorList) {
+            if (proveedor.getCif().equals(cif)) {
+                proveedor.setNombre(nombre);
+                proveedor.setDireccion(direccion);
+                proveedor.setLocalidad(localidad);
+                proveedor.setProvincia(provincia);
+                System.out.println("Proveedor actualizado.");
+                return;
+            }
+        }
+        System.out.println("El proveedor no existe.");
+    }
+//--------------------------------relacionado con editarProveedor------------------------
+    public boolean existeProveedor(String cif) {
+        for (Proveedor proveedor : proveedorList) {
+            if (proveedor.getCif().equals(cif)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -340,6 +373,5 @@ public class AlmacenController {
                 ", pedidoList=" + pedidoList + "\n" +
                 '}';
     }
-
 }
 

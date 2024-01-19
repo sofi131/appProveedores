@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="appProveedores:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b3b04c2-7e0a-4ea6-9dbe-69d5e7c9593a" name="Changes" comment="Comentarios para el javadoc.">
-      <change afterPath="$PROJECT_DIR$/src/com/ceica/Controladores/LoginController.java" afterDir="false" />
+    <list default="true" id="6b3b04c2-7e0a-4ea6-9dbe-69d5e7c9593a" name="Changes" comment="Cambios en el Main y creación de LoginController. (Para hacer el login).">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ceica/Controladores/AlmacenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Controladores/AlmacenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ceica/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Main.java" afterDir="false" />
@@ -46,6 +50,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "vcs.Git"
   }
 }]]></component>
@@ -182,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705603259113</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Cambios en el Main y creación de LoginController. (Para hacer el login).">
+      <option name="closed" value="true" />
+      <created>1705678332855</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1705678332855</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -198,6 +213,7 @@
     <MESSAGE value="Método CrearPedido." />
     <MESSAGE value="Métodos getPedidosByPieza y getPedidosByProveedor." />
     <MESSAGE value="Comentarios para el javadoc." />
-    <option name="LAST_COMMIT_MESSAGE" value="Comentarios para el javadoc." />
+    <MESSAGE value="Cambios en el Main y creación de LoginController. (Para hacer el login)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambios en el Main y creación de LoginController. (Para hacer el login)." />
   </component>
 </project>
