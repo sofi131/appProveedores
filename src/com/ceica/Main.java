@@ -1,27 +1,32 @@
 package com.ceica;
 
 import com.ceica.Controladores.AlmacenController;
+import com.ceica.Controladores.LoginController;
 import com.ceica.Modelos.Color;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
+        String usr, pass;
         AlmacenController almacen = new AlmacenController();
-        almacen.nuevoProveedor("a", "nombre", "dir", "loc", "pro");
-        // almacen.nuevoProveedor("b", "nombreb", "dir", "loc", "pro");
-        almacen.nuevaPieza("PiezaA", Color.AZUL, 45.5, 1);
-        almacen.nuevaPieza("PiezaB", Color.AZUL, 5.5, 2);
-        //para borrar
-        //System.out.println(almacen.borrarProveedor("a"));
-        //almacen.borrarProveedor("b");
-        //almacen.borrarProveedor("c");
-        //para editar los datos
-        //System.out.println(almacen.editarNombreProveedor("a","nombreotro"));
-        //almacen.editarPrecioPieza(1, 65.4);
-        System.out.println(almacen.nuevoPedido("a",1,50));
-        System.out.println(almacen.nuevoPedido("a",1,10));
-        System.out.println(almacen.nuevoPedido("j",0,30));
-        System.out.println(almacen.getPedidosByPieza(8));
-        System.out.println(almacen.toString());
+        Scanner leer = new Scanner(System.in);
+        System.out.println("Bienvenido a AppAlmacen");
+        System.out.println("...Enter para empezar");
+        leer.nextLine();
+        do {
+            System.out.println("Login de AppAlmacen");
+            System.out.println("Introduce Usuario: ");
+            usr = leer.nextLine();
+            System.out.println("Introduce password");
+            pass = leer.nextLine();
+            if (LoginController.login(usr,pass)){
+                System.out.println("Estoy en la AppAlmacén");
+                leer.nextLine();
+            }else{
+                System.out.println("Usuario o Contraseña incorrecta");
+            }
+        } while (true);
+
     }
 }

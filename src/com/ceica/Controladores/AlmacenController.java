@@ -236,7 +236,7 @@ public class AlmacenController {
 //        }
 //        return false;
     }
-
+//--------------------------------------------CRUD PEDIDOS-------------------------------------
     /**
      * @param cif cif
      * @param idPieza id de la pieza
