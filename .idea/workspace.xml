@@ -9,11 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b3b04c2-7e0a-4ea6-9dbe-69d5e7c9593a" name="Changes" comment="Creación de submenús.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="6b3b04c2-7e0a-4ea6-9dbe-69d5e7c9593a" name="Changes" comment="Validando precio, color y categoría.">
       <change beforePath="$PROJECT_DIR$/src/com/ceica/Controladores/AlmacenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Controladores/AlmacenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ceica/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ceica/Modelos/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Modelos/Categoria.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705689216193</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Validando precio, color y categoría.">
+      <option name="closed" value="true" />
+      <created>1705938688828</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1705938688828</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -224,6 +230,7 @@
     <MESSAGE value="Comentarios para el javadoc." />
     <MESSAGE value="Cambios en el Main y creación de LoginController. (Para hacer el login)." />
     <MESSAGE value="Creación de submenús." />
-    <option name="LAST_COMMIT_MESSAGE" value="Creación de submenús." />
+    <MESSAGE value="Validando precio, color y categoría." />
+    <option name="LAST_COMMIT_MESSAGE" value="Validando precio, color y categoría." />
   </component>
 </project>

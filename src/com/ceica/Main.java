@@ -93,18 +93,19 @@ public class Main {
 
                     break;
                 case "4":
-                    //Salir
+                    System.out.println(almacen.verPiezas());
                     break;
-                default:
+                case "5":
+                    break;                default:
                     System.out.println("Opción no válida");
 
             }
-        } while (!"4".equals(op)); //si es distinto de 4 se queda ahí
+        } while (!"5".equals(op)); //si es distinto de 5 se queda ahí
     }
 
     private static void nuevaPieza(Scanner leer, AlmacenController almacen) {
         String nombre, colorPieza;
-        double precio;
+        double precio = 0;
         Color color = null;
         boolean colorValido = false, categoriaValida=false, precioValido=false;
         int categoria;
@@ -143,7 +144,7 @@ public class Main {
 
             }
         }while (!categoriaValida);
-
+        almacen.nuevaPieza(nombre, color, precio, categoria);
     }
 
     //-------------------------------------------subMenúProveedores------------------------------
