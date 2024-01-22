@@ -22,6 +22,7 @@ public class AlmacenController {
         proveedorList = new ArrayList<>();
         pedidoList = new ArrayList<>();
         piezaList = new ArrayList<>();
+        //esto es irrelevante y se leerá desde la bd.
         categorias = new ArrayList<>();
         categorias.add(new Categoria(1, "pequeño"));
         categorias.add(new Categoria(2, "mediano"));
@@ -336,21 +337,36 @@ public class AlmacenController {
     public String nuevoProveedor(String cif) {
         return proveedorList.toString();
     }
-//---------------------------------------editarProveedor-----------------------------
+
+    //---------------------------------------editarProveedor-----------------------------
+//    public void editarProveedor(String cif, String nombre, String direccion, String localidad, String provincia) {
+//        for (Proveedor proveedor : proveedorList) {
+//            if (proveedor.getCif().equals(cif)) {
+//                proveedor.setNombre(nombre);
+//                proveedor.setDireccion(direccion);
+//                proveedor.setLocalidad(localidad);
+//                proveedor.setProvincia(provincia);
+//                System.out.println("El proveedor ha sido actualizado.");
+//                return;
+//            }
+//        }
+//        System.out.println("El proveedor no existe.");
+//    }
     public void editarProveedor(String cif, String nombre, String direccion, String localidad, String provincia) {
+
         for (Proveedor proveedor : proveedorList) {
-            if (proveedor.getCif().equals(cif)) {
+            if (cif.equals(proveedor.getCif())) {
                 proveedor.setNombre(nombre);
                 proveedor.setDireccion(direccion);
                 proveedor.setLocalidad(localidad);
                 proveedor.setProvincia(provincia);
-                System.out.println("Proveedor actualizado.");
-                return;
+                System.out.println("El proveedor ha sido actualizado.");
             }
         }
         System.out.println("El proveedor no existe.");
     }
-//--------------------------------relacionado con editarProveedor------------------------
+
+    //--------------------------------relacionado con editarProveedor------------------------
     public boolean existeProveedor(String cif) {
         for (Proveedor proveedor : proveedorList) {
             if (proveedor.getCif().equals(cif)) {
@@ -363,7 +379,7 @@ public class AlmacenController {
     /**
      * @return proveedores, piezas y pedidos
      */
-    //----------------------------------------------toString general---------------------------
+    //----------------------------------------------toString general-----------------------------
     //para pintar en main - n salto de línea
     @Override
     public String toString() {
@@ -372,6 +388,21 @@ public class AlmacenController {
                 ", piezaList=" + piezaList + "\n" +
                 ", pedidoList=" + pedidoList + "\n" +
                 '}';
+    }
+
+    //-------------------------------------------categorías disponibles------------------------------
+    public String categoriasDisponibles() {
+        return categorias.toString();
+    }
+
+    //----------------------------------------validar la categoría-----------------------------------
+    public boolean categoriaValida(int categoria) {
+        for (Categoria cat : categorias) {
+            if (cat.getId() == categoria) {
+                return true;
+            }
+        }
+    return false;
     }
 }
 

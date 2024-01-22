@@ -4,6 +4,8 @@ import com.ceica.Controladores.AlmacenController;
 import com.ceica.Controladores.LoginController;
 import com.ceica.Modelos.Color;
 
+import java.util.Arrays;
+import java.util.MissingFormatArgumentException;
 import java.util.Scanner;
 
 public class Main {
@@ -49,7 +51,7 @@ public class Main {
                     break;
                 case "2":
                     //Piezas
-                    //subMenuPiezas(leer, almacen);
+                    subMenuPiezas(leer, almacen);
                     break;
                 case "3":
                     //Pedidos
@@ -62,6 +64,86 @@ public class Main {
                     System.out.println("Opción no válida");
             }
         } while (!"4".equals(op)); //si es distinto de 4 se queda ahí
+    }
+
+    //----------------------------------subMenúPiezas-------------------------
+    private static void subMenuPiezas(Scanner leer, AlmacenController almacen) {
+        String op;
+        String menuPiezas = """
+                1. Nueva pieza
+                2. Cambiar precio
+                3. Borrar pieza
+                4. Ver piezas
+                5. Volver al menú anterior
+                """;
+        do {
+            System.out.println(menuPiezas);
+            op = leer.nextLine();
+            switch (op) {
+                case "1":
+                    nuevaPieza(leer, almacen);
+
+                    break;
+                case "2":
+
+
+                    break;
+                case "3":
+
+
+                    break;
+                case "4":
+                    //Salir
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+
+            }
+        } while (!"4".equals(op)); //si es distinto de 4 se queda ahí
+    }
+
+    private static void nuevaPieza(Scanner leer, AlmacenController almacen) {
+        String nombre, colorPieza;
+        double precio;
+        Color color = null;
+        boolean colorValido = false, categoriaValida=false, precioValido=false;
+        int categoria;
+        System.out.print("Nombre de la pieza: ");
+        nombre = leer.nextLine();
+        do {
+            System.out.print("Precio: ");
+            try {
+                precio = leer.nextDouble();
+                leer.nextLine();
+                precioValido=true;
+            }catch (Exception e){
+                //sino nos da un bucle
+                leer.nextLine();
+                System.out.println("Formato no válido");
+                precioValido=false;
+            }
+        }while(!precioValido);
+        do {
+            System.out.println("Color de la pieza (Colores disponibles)");
+            System.out.println(Arrays.stream(Color.values()).toList().toString());
+            colorPieza = leer.nextLine();
+            try {
+                color = Color.valueOf(colorPieza);
+                colorValido = true;
+            } catch (Exception e) {
+                colorValido = false;
+            }
+        } while (!colorValido);
+        do {
+            System.out.println(almacen.categoriasDisponibles());
+            categoria= leer.nextInt();
+            leer.nextLine();
+            if (almacen.categoriaValida(categoria)) {
+                categoriaValida=true;
+
+            }
+        }while (!categoriaValida);
+
     }
 
     //-------------------------------------------subMenúProveedores------------------------------
@@ -89,7 +171,8 @@ public class Main {
                     System.out.println("CIF del proveedor a editar: ");
                     cif = leer.nextLine();
                     if (almacen.existeProveedor(cif)) {
-                        almacen.editarProveedor(cif);
+                        //almacen.editarProveedor(cif);                 ERROR AQUÍ
+
                     } else {
                         System.out.println("El proveedor no existe.");
                     }
@@ -112,7 +195,6 @@ public class Main {
                 case "5":
                     //Salida
                     System.out.println("Volviendo al menú principal...");
-                    break;
                 default:
                     //Si se metiese una opción diferente a las anteriores.
                     System.out.println("Opción no válida");
@@ -159,7 +241,7 @@ public class Main {
             return false;
         }
     }
-    //----------------------------------verProveedores-------------------------
 }
+
 
 
