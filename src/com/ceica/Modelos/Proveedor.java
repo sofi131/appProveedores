@@ -1,5 +1,16 @@
 package com.ceica.Modelos;
 
+import com.ceica.bbdd.Conexion;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.lang.System.out;
+
 public class Proveedor {
     private int id;
     private String cif;
@@ -69,6 +80,34 @@ public class Proveedor {
     }
 
     private String provincia;
+
+    //------------------------------Conexión a proveedores-------------------------------
+    public static List<Proveedor> getProveedores() {
+        List<Proveedor> proveedorList = new ArrayList<>();
+        Connection conn = Conexion.conectar();
+        //Consulta
+        String sql = "select * from proveedores";
+        //createStatement da error, y en más acciones le damos a surroundedexception
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet respuesta = stm.executeQuery(sql);
+            //recorre los registros y mira si hay los siguientes
+            while (respuesta.next()) {
+                Proveedor proveedor = new Proveedor();
+                proveedor.setId(respuesta.getInt("idProveedor"));
+                proveedor.setNombre(respuesta.getString("nombre"));
+                proveedor.setDireccion(respuesta.getString("dirección"));
+                proveedor.setLocalidad(respuesta.getString("localidad"));
+                proveedor.setProvincia(respuesta.getString("provincia"));
+                proveedorList.add(proveedor);
+            }
+
+        } catch (SQLException e) {
+            // throw new RuntimeException(e);
+            return proveedorList;
+        }
+        return proveedorList;
+    }
 
 
     //método toString cadena de txt con toda la info

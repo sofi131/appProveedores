@@ -3,10 +3,13 @@ package com.ceica;
 import com.ceica.Controladores.AlmacenController;
 import com.ceica.Controladores.LoginController;
 import com.ceica.Modelos.Color;
+import com.ceica.Modelos.Pieza;
 
 import java.util.Arrays;
 import java.util.MissingFormatArgumentException;
 import java.util.Scanner;
+
+//import static com.ceica.Modelos.Pieza.idPieza;
 
 public class Main {
     public static void main(String[] args) {
@@ -85,24 +88,36 @@ public class Main {
 
                     break;
                 case "2":
-
+                //cambiar el precio
 
                     break;
                 case "3":
-
+                    //Eliminar pieza
+//                    System.out.println("ID de la pieza a eliminar ");
+//                    id = leer.nextInt();
+//                    if (almacen.existePieza(id)) {
+//                        //esto ya ha sido creado anteriormente
+//                        almacen.borrarPieza(id);
+//                    } else {
+//                        System.out.println("La pieza no existe");
+//                    }
 
                     break;
                 case "4":
                     System.out.println(almacen.verPiezas());
                     break;
                 case "5":
-                    break;                default:
+                    break;
+
+                default:
                     System.out.println("Opción no válida");
 
             }
         } while (!"5".equals(op)); //si es distinto de 5 se queda ahí
     }
 
+
+//-------------------------------nuevaPieza---------------------------------------
     private static void nuevaPieza(Scanner leer, AlmacenController almacen) {
         String nombre, colorPieza;
         double precio = 0;

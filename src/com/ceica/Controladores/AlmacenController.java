@@ -24,6 +24,7 @@ public class AlmacenController {
         piezaList = new ArrayList<>();
         //esto es irrelevante y se leerá desde la bd.
         categorias = new ArrayList<>();
+        proveedorList=Proveedor.getProveedores();
         categorias.add(new Categoria(1, "pequeño"));
         categorias.add(new Categoria(2, "mediano"));
         categorias.add(new Categoria(3, "grande"));
@@ -213,17 +214,35 @@ public class AlmacenController {
                 .findFirst().get();
     }
 
+
+    //-------------------------------borrarPieza----------------------------------
+//    public boolean existePieza(int id) {
+//        for (Pieza pieza : piezaList) {
+//            if (pieza.getId().equals(id)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+//    public boolean borrarPieza(int id) {
+//        return piezaList.removeIf(pieza -> id.equals(pieza.getId()));
+//    }
+
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Pieza pieza = (Pieza) o;
+//        return id.equals(pieza.id);
+//    }
+
+//    //-------------------------------editar precio pieza-----------------------------------
     /**
      * @param id     id del precio de la pieza
      * @param precio precio de la pieza
      * @return precio editado
      */
-    //-------------------------------borrar pieza----------------------------------
-//    public boolean borrarPieza(String cif) {
-//        return piezaList.removeIf(pieza -> cif.equals(pieza.getCif()));
-//    }
-//
-//    //-------------------------------editar precio pieza-----------------------------------
     public boolean editarPrecioPieza(int id, Double precio) {
         return piezaList.stream()
                 .filter(pieza -> pieza.getId() == id)
@@ -408,5 +427,6 @@ public class AlmacenController {
     public String verPiezas() {
         return piezaList.toString();
     }
+
 }
 
