@@ -46,6 +46,24 @@ public class Proveedor {
             throw new RuntimeException(e);
         }
     }
+//------------------------------------estático editarNombreProveedor--------------------------
+public static boolean editarNombreProveedor(String cif, String nombre) {
+    Connection conn = Conexion.conectar();
+    String sql = "update proveedores set nombre=? where cif=?";
+    try {
+        PreparedStatement pst=conn.prepareStatement(sql);
+        pst.setString(1,nombre);
+        pst.setString(2, cif);
+        if(pst.executeUpdate()>0){
+            return true;
+        }else{
+            return false;
+        }
+    } catch (SQLException e) {
+        //throw new RuntimeException(e);
+        return false;
+    }
+}
 
     //getter
     public int getId() {

@@ -9,13 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b3b04c2-7e0a-4ea6-9dbe-69d5e7c9593a" name="Changes" comment="Poniendo la configuración para conectar a la base de datos.">
+    <list default="true" id="6b3b04c2-7e0a-4ea6-9dbe-69d5e7c9593a" name="Changes" comment="Añadir y insertar proveedores">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ceica/Controladores/AlmacenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Controladores/AlmacenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ceica/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ceica/Modelos/Proveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Modelos/Proveedor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ceica/bbdd/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/bbdd/Conexion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ceica/bbdd/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +238,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706026255976</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Añadir y insertar proveedores">
+      <option name="closed" value="true" />
+      <created>1706033939250</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1706033939250</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -261,6 +267,7 @@
     <MESSAGE value="Validando precio, color y categoría." />
     <MESSAGE value="Guardando nueva pieza." />
     <MESSAGE value="Poniendo la configuración para conectar a la base de datos." />
-    <option name="LAST_COMMIT_MESSAGE" value="Poniendo la configuración para conectar a la base de datos." />
+    <MESSAGE value="Añadir y insertar proveedores" />
+    <option name="LAST_COMMIT_MESSAGE" value="Añadir y insertar proveedores" />
   </component>
 </project>

@@ -125,14 +125,32 @@ public class AlmacenController {
         }
         return false;
          */
-        for (Proveedor proveedor : proveedorList) {
-            if (cif.equals(proveedor.getCif())) {
+        /*
+        for(Proveedor proveedor : proveedorList){
+            if(cif.equals(proveedor.getCif())){
                 proveedor.setNombre(nombre);
                 return true;
             }
         }
         return false;
+         */
+        if (Proveedor.editarNombreProveedor(cif, nombre)) {
+            proveedorList = Proveedor.getProveedores();
+            return true;
+//            return proveedorList.stream()
+//                    .filter(p->cif.equals(p.getCif()))
+//                    .findFirst()
+//                    .map(p -> {
+//                        p.setNombre(nombre);
+//                        return true;
+//                    })
+//                    .orElse(false);
+        } else {
+            return false;
+        }
+
     }
+
     //-------------------------ActualizarProveedor--------------------------------
 //otro modo de ActualizarProveedor (pero en este caso solo modifica el nombre)
 //    public boolean editarNombreProveedor(String cif, String nombre){
@@ -429,6 +447,12 @@ public class AlmacenController {
 
     public String verPiezas() {
         return piezaList.toString();
+    }
+    public boolean getProveedorByCif(String cif) {
+        return proveedorList.stream()
+                .filter(p -> cif.equals(p.getCif()))
+                .findFirst()
+                .isPresent();
     }
 
 }
