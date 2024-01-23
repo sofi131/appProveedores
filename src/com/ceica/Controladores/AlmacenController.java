@@ -73,8 +73,14 @@ public class AlmacenController {
 //    }
     //-------------------------------borrarProveedor--------------------------------------
     public boolean borrarProveedor(String cif) {
-        return proveedorList.removeIf(proveedor -> cif.equals(proveedor.getCif()));
-    }
+//        return proveedorList.removeIf(proveedor -> cif.equals(proveedor.getCif()));
+        if(Proveedor.eliminarProveedor(cif)) {
+            proveedorList = Proveedor.getProveedores();
+            return true;
+        }else{
+                return false;
+            }
+        }
     //otra versión de borrarProveedor
 //    public boolean borrarProveedor(String cif){
 //        //recorres lista para buscar proveedor
@@ -379,19 +385,6 @@ public class AlmacenController {
     }
 
     //---------------------------------------editarProveedor-----------------------------
-//    public void editarProveedor(String cif, String nombre, String direccion, String localidad, String provincia) {
-//        for (Proveedor proveedor : proveedorList) {
-//            if (proveedor.getCif().equals(cif)) {
-//                proveedor.setNombre(nombre);
-//                proveedor.setDireccion(direccion);
-//                proveedor.setLocalidad(localidad);
-//                proveedor.setProvincia(provincia);
-//                System.out.println("El proveedor ha sido actualizado.");
-//                return;
-//            }
-//        }
-//        System.out.println("El proveedor no existe.");
-//    }
     public void editarProveedor(String cif, String nombre, String direccion, String localidad, String provincia) {
 
         for (Proveedor proveedor : proveedorList) {
@@ -448,6 +441,7 @@ public class AlmacenController {
     public String verPiezas() {
         return piezaList.toString();
     }
+    //-----------------------------para editar el nombre del proveedor------------------
     public boolean getProveedorByCif(String cif) {
         return proveedorList.stream()
                 .filter(p -> cif.equals(p.getCif()))

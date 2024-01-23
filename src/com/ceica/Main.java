@@ -215,11 +215,11 @@ public class Main {
                     //Eliminar proveedor
                     System.out.println("CIF del proveedor a eliminar: ");
                     cif = leer.nextLine();
-                    if (almacen.existeProveedor(cif)) {
+                    if (almacen.borrarProveedor(cif)) {
                         //esto ya ha sido creado anteriormente
-                        almacen.borrarProveedor(cif);
+                        System.out.println("Proveedor eliminado");
                     } else {
-                        System.out.println("El proveedor no existe.");
+                        System.out.println("El proveedor no se ha podido eliminar.");
                     }
                     break;
                 case "5":
