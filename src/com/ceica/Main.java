@@ -178,9 +178,17 @@ public class Main {
             switch (op) {
                 case "1":
                     //Nuevo proveedor
-                    System.out.println("CIF: ");
-                    cif = leer.nextLine();
-                    almacen.nuevoProveedor(cif);
+                    System.out.print("CIF: ");
+                    cif=leer.nextLine();
+                    System.out.print("Nombre: ");
+                    nombre= leer.nextLine();
+                    System.out.print("Direccion: ");
+                    direccion=leer.nextLine();
+                    System.out.print("Localidad: ");
+                    localidad=leer.nextLine();
+                    System.out.print("Provincia: ");
+                    provincia=leer.nextLine();
+                    almacen.nuevoProveedor(cif,nombre,direccion,localidad,provincia);
                     break;
                 case "2":
                     //Editar proveedor

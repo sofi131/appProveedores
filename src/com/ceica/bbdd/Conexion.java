@@ -24,10 +24,9 @@ public class Conexion {
             usuario = propiedades.getProperty("db.usuario");
             password = propiedades.getProperty("db.password");
         } catch (Exception e) {
-            url = "jdbc:mysql://localhost:3306/proveedores";
+            url = "jdbc:mysql://localhost:3306/ejercicio_1";
             usuario = "root";
             password = "1234";
-
         }
 
         try {
@@ -37,6 +36,5 @@ public class Conexion {
         } catch (Exception e) {
             return null;
         }
-
     }
 }

@@ -46,10 +46,13 @@ public class AlmacenController {
         proveedor.setLocalidad(localidad);
         proveedor.setProvincia(provincia);
         //para que devuelva un booleano
-
+        if (Proveedor.insertar(proveedor)){
+            return proveedorList.add(proveedor);
+        }else{
+            return false;
+        }
         //proveedorList.remove(proveedor);
-        return proveedorList.add(proveedor);
-
+        //return proveedorList.add(proveedor);
     }
 
     /**
