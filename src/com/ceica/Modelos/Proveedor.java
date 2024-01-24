@@ -137,7 +137,7 @@ public static boolean editarNombreProveedor(String cif, String nombre) {
 
     private String provincia;
 
-    //------------------------------Conexión a proveedores-------------------------------
+    //------------Conexión a proveedores //devuelve lista proveedores y añade-------------------
     public static List<Proveedor> getProveedores()  {
         List<Proveedor> proveedorList=new ArrayList<>();
         Connection conn= Conexion.conectar();
@@ -170,7 +170,9 @@ public static boolean editarNombreProveedor(String cif, String nombre) {
     }
 //------------------------------------editarNombreProveedor--------------------
 //    public boolean editarNombreProveedor(String cif, String nombre){
-//
+//       try {
+//            Statement stm=conn.createStatement();
+//            ResultSet respuesta = stm.executeQuery(sql);
 //    };
 
     //método toString cadena de txt con toda la info
