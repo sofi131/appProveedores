@@ -22,6 +22,13 @@ public class Usuario {
         } catch (SQLException e) {
             //throw new RuntimeException(e);
             return false;
+            //para no poner tantos conn.close() si no se pondría en todos
+        }finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                //throw new RuntimeException(e);
+            }
         }
     }
 }
