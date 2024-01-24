@@ -2,43 +2,33 @@ package com.ceica.Modelos;
 
 import com.ceica.bbdd.Conexion;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Usuario {
-    public static boolean getUsuario(String usr, String pass) {
-        Connection conn = Conexion.conectar();
-        String sql = "select * from usuario where usuario=? and password=?";
+    public static boolean getUsuario(String usr,String pass){
+        Connection conn=Conexion.conectar();
+        String sql="select * from usuario where usuario=? and password=?";
         try {
-            PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setString(1, usr);
-            pst.setString(2, pass);
-            ResultSet resultSet = pst.getResultSet();
-            if (resultSet.next()) {
+            PreparedStatement pst=conn.prepareStatement(sql);
+            pst.setString(1,usr);
+            pst.setString(2,pass);
+            ResultSet resultSet=pst.executeQuery();
+            if(resultSet.next()){
                 return true;
-            } else {
+            }else{
                 return false;
             }
         } catch (SQLException e) {
-            //throw new RuntimeException(e);
             return false;
-            //para no poner tantos conn.close() si no se pondría en todos
         }finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                //throw new RuntimeException(e);
+
             }
         }
     }
 }
-
-
-
-//comprobar que existen en la base de datos
-// crear la tabla usuarios --> 3 campos: id usuario - string, password-string -- HECHO
-//los modelos --> hace falta un modelo usuario y dentro de
-// usuario hay que hacer la conexión a la base de datos igual que hicimos con proveedores -- HECHO
-// método static - objeto conection select where (tata) y ejecutar esa consulta -- HECHO
-// result set de un registro si hay 0 está mal no devuelve nada (FALSE TRUE)
-

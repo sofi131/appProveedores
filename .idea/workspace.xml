@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b3b04c2-7e0a-4ea6-9dbe-69d5e7c9593a" name="Changes" comment="Conectando usuarios a la base de datos de proveedores.">
+      <change beforePath="$PROJECT_DIR$/src/com/ceica/Controladores/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Controladores/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ceica/Modelos/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ceica/Modelos/Usuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -267,7 +268,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706111373357</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Conectando usuarios a la base de datos de proveedores.">
+      <option name="closed" value="true" />
+      <created>1706111952597</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1706111952597</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Conectando usuarios a la base de datos de proveedores.">
+      <option name="closed" value="true" />
+      <created>1706112024258</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1706112024258</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
