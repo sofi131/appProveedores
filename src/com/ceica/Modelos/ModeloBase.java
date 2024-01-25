@@ -70,12 +70,12 @@ public abstract class ModeloBase {
             e.printStackTrace();
         }
     }
-
+//Método para el SELECT
     protected abstract Object createObjectFromResultSet(ResultSet resultSet) throws SQLException;
-
+//solo está definido, no implementado
     protected List<Object> leerTodos() {
         List<Object> resultList = new ArrayList<>();
-
+//lista de objetos genéricos
         String sql = "SELECT * FROM " + getNombreTabla();
 
         try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
@@ -84,6 +84,8 @@ public abstract class ModeloBase {
 
             while (resultSet.next()) {
                 Object obj = createObjectFromResultSet(resultSet);
+                //cada objeto que hay en resultset son resultsets (de un array pasa a un objeto genérico)
+                //el create (...) es un método abstracto
                 resultList.add(obj);
             }
 

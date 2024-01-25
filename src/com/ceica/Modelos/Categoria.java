@@ -76,6 +76,14 @@ public class Categoria extends ModeloBase {
     protected String getNombreTabla() {
         return "categorias";
     }
+    //para el select -> una categoría tb es un objeto aunque se haya creado como categoría
+    @Override
+    protected Object createObjectFromResultSet(ResultSet resultSet) throws SQLException {
+        Categoria categoria = new Categoria();
+        categoria.setId(resultSet.getInt("idcategoria"));
+        categoria.setNombre(resultSet.getString("categoria"));
+        return categoria;
+    }
     //para probar que funciona
     public static void main(String[] a) {
         //System.out.println("Hola");
@@ -89,6 +97,14 @@ public class Categoria extends ModeloBase {
         //categoria.actualizar("set categoria=? where idcategoria=?", "Mesas", 1);
         //Borrar------------------------------------ no se puede porque es una FK
          //categoria.borrar("idcategoria=?",1);
+        //Select
+        List<Categoria> categoriaList=new ArrayList<>();
+        List<Object> list=categoria.leerTodos();
+        for (Object obj :list){
+            categoriaList.add((Categoria) obj);
+        }
+
+        System.out.println(categoriaList.toString());
     }
 
 }
