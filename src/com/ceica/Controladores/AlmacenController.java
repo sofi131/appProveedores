@@ -6,125 +6,83 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase que representa el controlador de un almacén.
+ */
 public class AlmacenController {
-    // public static final Enum={"Verde","Azul","Rojo"};
+
     private List<Proveedor> proveedorList;
     private List<Pieza> piezaList;
     private List<Pedido> pedidoList;
     private List<Categoria> categorias;
 
-
-    /**
-     * Listas dentro del AlmacénController
-     */
-    //vacío -> constructor almacén que vamos llenando --- nos vamos a tener poner en ese código QUITAR QUITAR
     public AlmacenController() {
+
         proveedorList = new ArrayList<>();
         pedidoList = new ArrayList<>();
         piezaList = new ArrayList<>();
-        //esto es irrelevante y se leerá desde la bd.
         categorias = new ArrayList<>();
-        proveedorList=Proveedor.getProveedores();
-        //esto se tiene que meter en otro lado
-//        categorias.add(new Categoria(1, "pequeño"));
-//        categorias.add(new Categoria(2, "mediano"));
-//        categorias.add(new Categoria(3, "grande"));
+        proveedorList = Proveedor.getProveedores();
+        Categoria categoria = new Categoria(1, "pequeño");
+        categorias.add(categoria);
+        categorias.add(new Categoria(2, "mediano"));
+        categorias.add(new Categoria(3, "grande"));
+
     }
 
-    //------------------------------------aquí hay que borrar los de antes------------
-
-
     /**
-     * @param cif       cif
-     * @param nombre    nombre
-     * @param direccion dirección
-     * @param localidad localidad
-     * @param provincia provincia
-     * @return Un nuevo proveedor
+     * Método para añadir un nuevo proveedor al almacén.
+     *
+     * @param cif       El CIF del proveedor.
+     * @param nombre    El nombre del proveedor.
+     * @param direccion La dirección del proveedor.
+     * @param localidad La localidad del proveedor.
+     * @param provincia La provincia del proveedor.
+     * @return true si se añadió el proveedor con éxito, false de lo contrario.
      */
-    //----------------------------------------nuevoProveedor--------------------------------------------
-    //creamos obj tipo proveedor -> para añadir nuevos proveedores
     public boolean nuevoProveedor(String cif, String nombre, String direccion, String localidad, String provincia) {
         Proveedor proveedor = new Proveedor(cif, nombre);
-        proveedor.setDireccion(direccion);
-        proveedor.setLocalidad(localidad);
-        proveedor.setProvincia(provincia);
-        //para que devuelva un booleano
-        if (Proveedor.insertar(proveedor)){
+        if (proveedor.insertar("(cif,nombre,direccion,localidad,provincia)" +
+                " values (?,?,?,?,?)",cif,nombre,direccion,localidad,provincia)) {
             return proveedorList.add(proveedor);
+        } else {
+            return false;
+        }
+
+    }
+
+    /*
+    public boolean borrarProveedor(String cif){
+        for (int i = 0; i < proveedorList.size(); i++) {
+            if(cif.equals(proveedorList.get(i).getCif())){
+                proveedorList.remove(i);
+                //proveedorList.remove(proveedorList.get(i));
+                return true;
+            }
+        }
+        return false;
+    }
+
+     */
+    public boolean borrarProveedor(String cif) {
+        /*
+        return proveedorList.removeIf(proveedor -> cif.equals(proveedor.getCif()));
+        */
+        Proveedor proveedor=new Proveedor();
+        if(proveedor.borrar("cif=?",cif)){
+            proveedorList=Proveedor.getProveedores();
+            return true;
         }else{
             return false;
         }
-        //proveedorList.remove(proveedor);
-        //return proveedorList.add(proveedor);
+
     }
 
     /**
-     * @param cif cif
-     * @return Borra el proveedor
+     * @param cif    CIF del proveedor
+     * @param nombre Nuevo nombre para el proveedor
+     * @return True si puede editar el nombre del proveedor
      */
-    //prueba -------------borrar proveedor----------------- - MI VERSIÓN
-//    public boolean borrarProveedor(String cif) {
-//        //recorres lista para buscar proveedor
-//        for (Proveedor proveedor : proveedorList) {
-//            if (proveedor.getCif().equals(cif)) {
-//                proveedorList.remove(proveedor);
-//                return true;
-//            }
-//        }
-//        //si no se encuentra al proveedor
-//        return false;
-//    }
-    //-------------------------------borrarProveedor--------------------------------------
-    public boolean borrarProveedor(String cif) {
-//        return proveedorList.removeIf(proveedor -> cif.equals(proveedor.getCif()));
-        if(Proveedor.eliminarProveedor(cif)) {
-            proveedorList = Proveedor.getProveedores();
-            return true;
-        }else{
-                return false;
-            }
-        }
-    //otra versión de borrarProveedor
-//    public boolean borrarProveedor(String cif){
-//        //recorres lista para buscar proveedor
-//        for (int i = 0; i < proveedorList.size(); i++) {
-//            if(cif.equals(proveedorList.get(i).getCif())){
-//                proveedorList.remove(i);
-//                //proveedorList.remove(proveedorList.get(i));
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-
-    //otra versión con función landa -> funciones flecha // si "eso" es igual es true sino false
-//    public boolean borrarProveedor(String cif){
-//        return proveedorList.removeIf(proveedor -> cif.equals(proveedor.getCif()));
-//    }
-
-    /**
-     * @param cif    cif
-     * @param nombre nombre
-     * @return Datos del proveedor editados
-     */
-    //-------------------actualizar--------------- modificar el proveedor MI VERSIÓN - lo edita tó
-//    public boolean actualizarProveedor(String cif, String nombre, String direccion, String localidad, String provincia){
-//        //busca el proveedor en la lista (for each) clase variable:lista proveedor
-//        for (Proveedor proveedor : proveedorList) {
-//            if (proveedor.getCif().equals(cif)){
-//                //proveedor.setCif(cif);
-//                proveedor.setNombre(nombre);
-//                proveedor.setDireccion(direccion);
-//                proveedor.setLocalidad(localidad);
-//                proveedor.setProvincia(provincia);
-//                return true;
-//            }
-//        }
-//        //si no se encontró
-//          return false;
-//    }
-    //-------------------------------------editarNombreProveedor----------------------------------
     public boolean editarNombreProveedor(String cif, String nombre) {
         /*
         for (int i = 0; i < proveedorList.size(); i++) {
@@ -144,135 +102,21 @@ public class AlmacenController {
         }
         return false;
          */
-        if (Proveedor.editarNombreProveedor(cif, nombre)) {
-            proveedorList = Proveedor.getProveedores();
+
+        Proveedor proveedor=new Proveedor();
+        if (proveedor.actualizar("nombre=? where cif=?",nombre,cif)) {
+            proveedorList=Proveedor.getProveedores();
             return true;
-//            return proveedorList.stream()
-//                    .filter(p->cif.equals(p.getCif()))
-//                    .findFirst()
-//                    .map(p -> {
-//                        p.setNombre(nombre);
-//                        return true;
-//                    })
-//                    .orElse(false);
         } else {
             return false;
         }
 
     }
 
-    //-------------------------ActualizarProveedor--------------------------------
-//otro modo de ActualizarProveedor (pero en este caso solo modifica el nombre)
-//    public boolean editarNombreProveedor(String cif, String nombre){
-//        for (int i = 0; i < proveedorList.size(); i++) {
-//            if(cif.equals(proveedorList.get(i).getCif())){
-//                proveedorList.get(i).setNombre(nombre);
-//                return true;
-
-//            }
-//        }
-//        return false;
-//    }
-//--------------------editarNombreProveedor--------------------------------------------
-//    Otra manera
-//
-//    public boolean editarNombreProveedor(String cif, String nombre){
-//
-//        for(Proveedor proveedor : proveedorList){
-//            if(cif.equals(proveedor.getCif())){
-//                proveedor.setNombre(nombre);
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-// ------------------------Prueba con map------------------------------------------
-//    public boolean editarNombreProveedor(String cif, String nombre){
-//        /*
-//        for (int i = 0; i < proveedorList.size(); i++) {
-//            if(cif.equals(proveedorList.get(i).getCif())){
-//                proveedorList.get(i).setNombre(nombre);
-//                return true;
-//            }
-//        }
-//        return false;
-//         */
-//        /*
-//        for(Proveedor proveedor : proveedorList){
-//            if(cif.equals(proveedor.getCif())){
-//                proveedor.setNombre(nombre);
-//                return true;
-//            }
-//        }
-//        return false;
-//         */
-//        proveedorList.stream()
-//                .filter(p->cif.equals(p.getCif()))
-//                .findFirst()
-//                .map(p -> {
-//                    p.setNombre(nombre);
-//                    return true;
-//                })
-//                .orElse(false);
-//        return false;
-//    }
-//----------------------------CRUD de piezas-------------------------------------
-
     /**
-     * @param nombre      nombre pieza
-     * @param color       color pieza
-     * @param precio      precio pieza
-     * @param idcategoria categoría pieza
-     * @return Una nueva pieza
-     */
-    //alta, editar, eliminar
-//---------------------------nueva pieza y categorías--------------------------------
-    public boolean nuevaPieza(String nombre, Color color, Double precio, int idcategoria) {
-        Pieza pieza = new Pieza(nombre, color.toString(), precio);
-        pieza.setCategoria(getCategoriaById(idcategoria));
-        piezaList.add(pieza);
-//
-        return true;
-    }
-
-    /**
-     * @param id id de la categoría de la pieza
-     * @return categoría de la pìeza
-     */
-    private Categoria getCategoriaById(int id) {
-        return categorias.stream()
-                .filter(categoria -> categoria.getId() == id)
-                .findFirst().get();
-    }
-
-
-    //-------------------------------borrarPieza----------------------------------
-//    public boolean existePieza(int id) {
-//        for (Pieza pieza : piezaList) {
-//            if (pieza.getId().equals(id)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//    public boolean borrarPieza(int id) {
-//        return piezaList.removeIf(pieza -> id.equals(pieza.getId()));
-//    }
-
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Pieza pieza = (Pieza) o;
-//        return id.equals(pieza.id);
-//    }
-
-//    //-------------------------------editar precio pieza-----------------------------------
-    /**
-     * @param id     id del precio de la pieza
-     * @param precio precio de la pieza
-     * @return precio editado
+     * @param id     idpieza
+     * @param precio nuevo precio
+     * @return true si puede editar el precio
      */
     public boolean editarPrecioPieza(int id, Double precio) {
         return piezaList.stream()
@@ -280,24 +124,44 @@ public class AlmacenController {
                 .findFirst()
                 .map(pieza -> {
                     pieza.setPrecio(precio);
-
                     return true;
                 })
                 .orElse(false);
-//        }
-//        return false;
     }
-//--------------------------------------------CRUD PEDIDOS-------------------------------------
 
     /**
-     * @param cif      cif
-     * @param idPieza  id de la pieza
-     * @param cantidad nº de piezas
-     * @return Que el pedido haya sido creado o que haya sido un error
+     * @param nombre      Nombre de la pieza
+     * @param color       Color de la pieza
+     * @param precio      Precio de la pieza
+     * @param idcategoria idCategoria de la categoría de la pieza
+     * @return true si puede crear la pieza
      */
-    //---------------------------------------pedidos------------------------------------------------
+    public boolean nuevaPieza(String nombre, Color color, Double precio, int idcategoria) {
+        Pieza pieza = new Pieza(nombre, color.toString(), precio);
+        pieza.setCategoria(getCategoriaById(idcategoria));
+        piezaList.add(pieza);
+        return true;
+    }
+
+    /**
+     * @param id Id de la categoria
+     * @return Categoria del id solicitado
+     */
+    private Categoria getCategoriaById(int id) {
+        return categorias.stream()
+                .filter(c -> c.getId() == id).
+                findFirst().get();
+    }
+
+    /**
+     * Método para grabar nuevo pedido. El pedido se graba con la fecha actual
+     *
+     * @param cif      CIF del proveedor
+     * @param idPieza  ID de la pieza
+     * @param cantidad Cantidad solicitada
+     * @return Información sobre si ha completado el pedido o no
+     */
     public String nuevoPedido(String cif, int idPieza, int cantidad) {
-        //Pedido pedido = new Pedido(); no hace falta
         Proveedor proveedor = getProveedorByCIF(cif);
         if (proveedor != null) {
             Pieza pieza = getPiezaByID(idPieza);
@@ -308,7 +172,7 @@ public class AlmacenController {
                 pedidoList.add(pedido1);
                 return "Pedido creado";
             } else {
-                return "Error al crear el pedido, Proveedor no existe";
+                return "Error al crear el pedido, Pieza no existe";
             }
         } else {
             return "Error al crear el pedido, Proveedor no existe";
@@ -316,10 +180,9 @@ public class AlmacenController {
     }
 
     /**
-     * @param id id pieza
-     * @return pieza
+     * @param id ID de la pieza
+     * @return Pieza buscada por ID
      */
-    //otra manera de hacer el for (la de antes)
     private Pieza getPiezaByID(int id) {
         for (int i = 0; i < piezaList.size(); i++) {
             if (piezaList.get(i).getId() == id) {
@@ -330,22 +193,21 @@ public class AlmacenController {
     }
 
     /**
-     * @param cif cif proveedor
-     * @return proveedor o no
+     * @param cif CIF del proveedor buscado
+     * @return Proveedor buscado
      */
     private Proveedor getProveedorByCIF(String cif) {
         for (Proveedor p : proveedorList) {
             if (cif.equals(p.getCif())) {
                 return p;
             }
-            //no hay ningún proveedor con esas características
         }
         return null;
     }
 
     /**
-     * @param idPieza id de la pieza
-     * @return ver si hay los pedidos correspondientes de la pieza o no
+     * @param idPieza ID de la Pieza
+     * @return String Lista de pedidos de la pieza solicitada en formato string
      */
     public String getPedidosByPieza(int idPieza) {
         List<Pedido> pedidosByPieza = new ArrayList<>();
@@ -362,96 +224,57 @@ public class AlmacenController {
     }
 
     /**
-     * @param cif cif del proveedor
-     * @return ver si hay pedidos de un proveedor o no
+     * Buscar proveedor por CIF
+     *
+     * @param cif CIF del proveedor
+     * @return String Lista de pedidos del proveedor
      */
     public String getPedidosByProveedor(String cif) {
-        List<Pedido> pedidosByProveedor = new ArrayList<>();
-        for (Pedido pedido : pedidoList) {
-            if (pedido.getProveedor().getCif().equals(cif)) {
-                pedidosByProveedor.add(pedido);
-            }
-        }
-        if (pedidosByProveedor.size() > 0) {
-            return pedidosByProveedor.toString();
-        } else {
-            return "No hay pedidos de esta proveedor";
-        }
+        return pedidoList.stream()
+                .filter(pedido -> cif.equals(pedido.getProveedor().getCif()))
+                .toList()
+                .stream()
+                .findFirst()
+                .map(Object::toString)
+                .orElse("No hay pedidos de ese proveedor");
     }
 
-    //------------------------------Submenú parte proveedores------------------------
     public String verProveedores() {
         return proveedorList.toString();
     }
 
-    public String nuevoProveedor(String cif) {
-        return proveedorList.toString();
-    }
-
-    //---------------------------------------editarProveedor-----------------------------
-    public void editarProveedor(String cif, String nombre, String direccion, String localidad, String provincia) {
-
-        for (Proveedor proveedor : proveedorList) {
-            if (cif.equals(proveedor.getCif())) {
-                proveedor.setNombre(nombre);
-                proveedor.setDireccion(direccion);
-                proveedor.setLocalidad(localidad);
-                proveedor.setProvincia(provincia);
-                System.out.println("El proveedor ha sido actualizado.");
-            }
-        }
-        System.out.println("El proveedor no existe.");
-    }
-
-    //--------------------------------relacionado con editarProveedor------------------------
-    public boolean existeProveedor(String cif) {
-        for (Proveedor proveedor : proveedorList) {
-            if (proveedor.getCif().equals(cif)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * @return proveedores, piezas y pedidos
-     */
-    //----------------------------------------------toString general-----------------------------
-    //para pintar en main - n salto de línea
     @Override
     public String toString() {
         return "AlmacenController{" + "\n" +
                 "proveedorList=" + proveedorList + "\n" +
                 ", piezaList=" + piezaList + "\n" +
-                ", pedidoList=" + pedidoList + "\n" +
+                ", pedidoList="
+                + pedidoList + "\n" +
                 '}';
     }
 
-    //-------------------------------------------categorías disponibles------------------------------
+
     public String categoriasDisponibles() {
         return categorias.toString();
     }
 
-    //----------------------------------------validar la categoría-----------------------------------
     public boolean categoriaValida(int categoria) {
         for (Categoria cat : categorias) {
             if (cat.getId() == categoria) {
                 return true;
             }
         }
-    return false;
+        return false;
     }
 
     public String verPiezas() {
         return piezaList.toString();
     }
-    //-----------------------------para editar el nombre del proveedor------------------
+
     public boolean getProveedorByCif(String cif) {
         return proveedorList.stream()
                 .filter(p -> cif.equals(p.getCif()))
                 .findFirst()
                 .isPresent();
     }
-
 }
-

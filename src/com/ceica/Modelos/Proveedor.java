@@ -6,76 +6,85 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.System.out;
-
-public class Proveedor {
+public class Proveedor extends ModeloBase {
     private int id;
     private String cif;
     private String nombre;
     private String direccion;
     private String localidad;
+    private String provincia;
 
-    //vacío
     public Proveedor() {
-
     }
 
-    //2 valores
-    public Proveedor(java.lang.String cif, java.lang.String nombre) {
+    public Proveedor(String cif, String nombre) {
         this.cif = cif;
         this.nombre = nombre;
     }
 
-    public static boolean insertar(Proveedor proveedor) {
-        Connection conn=Conexion.conectar();
-        String sql="insert into proveedores (nombre,dirección,localidad,provincia,cif)" +
-                " values (?,?,?,?,?)";
-        try {
-            PreparedStatement pst=conn.prepareStatement(sql);
-            pst.setString(1,proveedor.getNombre());
-            pst.setString(2, proveedor.getDireccion());
-            pst.setString(3,proveedor.getLocalidad());
-            pst.setString(4,proveedor.getProvincia());
-            pst.setString(5,proveedor.getCif());
-            if(pst.executeUpdate()<0){
-                return false;
-            }else{
-                return true;
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
+//--------------------------------get y set----------------------------------
+
+    public int getId() {
+        return id;
     }
-//------------------------------------estático editarNombreProveedor--------------------------
-public static boolean editarNombreProveedor(String cif, String nombre) {
-    Connection conn = Conexion.conectar();
-    String sql = "update proveedores set nombre=? where cif=?";
-    try {
-        PreparedStatement pst=conn.prepareStatement(sql);
-        pst.setString(1,nombre);
-        pst.setString(2, cif);
-        if(pst.executeUpdate()>0){
-            return true;
-        }else{
-            conn.close();
-            return false;
-        }
-    } catch (SQLException e) {
-        //throw new RuntimeException(e);
-        return false;
+
+    public void setId(int id) {
+        this.id = id;
     }
-}
-//-------------------------------------estático eliminarProveedor---------------------
+
+    public java.lang.String getCif() {
+        return cif;
+    }
+
+    public void setCif(java.lang.String cif) {
+        this.cif = cif;
+    }
+
+    public java.lang.String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(java.lang.String nombre) {
+        this.nombre = nombre;
+    }
+
+    public java.lang.String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(java.lang.String direccion) {
+        this.direccion = direccion;
+    }
+
+    public java.lang.String getLocalidad() {
+        return localidad;
+    }
+
+    public void setLocalidad(java.lang.String localidad) {
+        this.localidad = localidad;
+    }
+
+    public java.lang.String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(java.lang.String provincia) {
+        this.provincia = provincia;
+    }
+
+
+/*
     public static boolean eliminarProveedor(String cif) {
-        Connection conn=Conexion.conectar();
-        String sql="delete from proveedores where cif=?";
+        Connection conn = Conexion.conectar();
+        String sql = "delete from proveedores where cif=?";
         try {
-            PreparedStatement pst=conn.prepareStatement(sql);
-            pst.setString(1,cif);
-            if (pst.executeUpdate()>0){
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, cif);
+            if (pst.executeUpdate() > 0) {
                 conn.close();
                 return true;
-            }else{
+            } else {
                 conn.close();
                 return false;
             }
@@ -83,74 +92,46 @@ public static boolean editarNombreProveedor(String cif, String nombre) {
             //throw new RuntimeException(e);
             return false;
         }
-    }
 
-    //getter
-    public int getId() {
-        return id;
     }
+*/
+    /*
+    public static boolean editarNombreProveedor(String cif, String nombre) {
+        Connection conn = Conexion.conectar();
+        String sql = "update proveedores set nombre = ? where cif = ?";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, nombre);
+            pst.setString(2, cif);
+            if (pst.executeUpdate() > 0) {
+                conn.close();
+                return true;
+            } else {
+                conn.close();
+                return false;
+            }
+        } catch (SQLException e) {
+            //throw new RuntimeException(e);
+            return false;
+        }
 
-    public String getCif() {
-        return cif;
     }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public String getLocalidad() {
-        return localidad;
-    }
-
-    public String getProvincia() {
-        return provincia;
-    }
-
-    //setter
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setCif(String cif) {
-        this.cif = cif;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
-    }
-
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
-    }
-
-    private String provincia;
+*/
 
     //------------Conexión a proveedores //devuelve lista proveedores y añade-------------------
-    public static List<Proveedor> getProveedores()  {
-        List<Proveedor> proveedorList=new ArrayList<>();
-        Connection conn= Conexion.conectar();
-        String sql="select * from proveedores";
+    public static List<Proveedor> getProveedores() {
+        List<Proveedor> proveedorList = new ArrayList<>();
+        Connection conn = Conexion.conectar();
+        String sql = "select * from proveedores";
         try {
-            Statement stm=conn.createStatement();
+            Statement stm = conn.createStatement();
             ResultSet respuesta = stm.executeQuery(sql);
-            while (respuesta.next()){
-                Proveedor proveedor=new Proveedor();
+            while (respuesta.next()) {
+                Proveedor proveedor = new Proveedor();
                 proveedor.setId(respuesta.getInt("idProveedor"));
                 proveedor.setCif(respuesta.getString("cif"));
                 proveedor.setNombre(respuesta.getString("nombre"));
-                proveedor.setDireccion(respuesta.getString("dirección"));
+                proveedor.setDireccion(respuesta.getString("direccion"));
                 proveedor.setLocalidad(respuesta.getString("localidad"));
                 proveedor.setProvincia(respuesta.getString("provincia"));
                 proveedorList.add(proveedor);
@@ -168,14 +149,8 @@ public static boolean editarNombreProveedor(String cif, String nombre) {
         }
         return proveedorList;
     }
-//------------------------------------editarNombreProveedor--------------------
-//    public boolean editarNombreProveedor(String cif, String nombre){
-//       try {
-//            Statement stm=conn.createStatement();
-//            ResultSet respuesta = stm.executeQuery(sql);
-//    };
 
-    //método toString cadena de txt con toda la info
+
     @Override
     public String toString() {
         return "Proveedor{" +
@@ -186,5 +161,15 @@ public static boolean editarNombreProveedor(String cif, String nombre) {
                 ", localidad='" + localidad + '\'' +
                 ", provincia='" + provincia + '\'' + "\n" +
                 '}';
+    }
+
+    @Override
+    protected String getNombreTabla() {
+        return "proveedores";
+    }
+
+    @Override
+    protected Object createObjectFromResultSet(ResultSet resultSet) throws SQLException {
+        return null;
     }
 }

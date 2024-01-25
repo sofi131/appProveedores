@@ -37,24 +37,25 @@ public abstract class ModeloBase {
 
     // Métodos para CRUD
 
-    protected void insertar(String sql, Object... parametros) {
+    public boolean insertar(String sql, Object... parametros) {
 
         sql = "insert into " + getNombreTabla() + " " + sql;
-        ejecutarQuery(sql, parametros);
+        return ejecutarQuery(sql, parametros);
+
     }
 
-    protected void actualizar(String sql, Object... parametros) {
-        sql = "update " + getNombreTabla() + " " + sql;
-        ejecutarQuery(sql, parametros);
+    public boolean actualizar(String sql, Object... parametros) {
+        sql = "update " + getNombreTabla() + " set " + sql;
+        return ejecutarQuery(sql, parametros);
     }
 
-    protected void borrar(String sql, Object... parametros) {
+    public boolean borrar(String sql, Object... parametros) {
         sql = "delete from " + getNombreTabla() + " where " + sql;
-        ejecutarQuery(sql, parametros);
+        return ejecutarQuery(sql, parametros);
     }
 
     // Método genérico para ejecutar consultas SQL
-    private void ejecutarQuery(String sql, Object... parametros) {
+    private boolean ejecutarQuery(String sql, Object... parametros) {
         try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
              PreparedStatement preparedStatement = conexion.prepareStatement(sql)) {
 
@@ -64,18 +65,23 @@ public abstract class ModeloBase {
             }
 
             // Ejecutar la consulta
-            preparedStatement.executeUpdate();
+            if (preparedStatement.executeUpdate() > 0) {
+                return true;
+            } else {
+                return false;
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
-//Método para el SELECT
+
     protected abstract Object createObjectFromResultSet(ResultSet resultSet) throws SQLException;
-//solo está definido, no implementado
+
     protected List<Object> leerTodos() {
         List<Object> resultList = new ArrayList<>();
-//lista de objetos genéricos
+
         String sql = "SELECT * FROM " + getNombreTabla();
 
         try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
@@ -84,8 +90,6 @@ public abstract class ModeloBase {
 
             while (resultSet.next()) {
                 Object obj = createObjectFromResultSet(resultSet);
-                //cada objeto que hay en resultset son resultsets (de un array pasa a un objeto genérico)
-                //el create (...) es un método abstracto
                 resultList.add(obj);
             }
 
@@ -95,5 +99,6 @@ public abstract class ModeloBase {
 
         return resultList;
     }
+
 
 }
