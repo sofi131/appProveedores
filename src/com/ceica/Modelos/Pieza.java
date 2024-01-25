@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pieza {
+public class Pieza extends ModeloBase{
     //nuevo
     private static int idPieza = 0;
     private int id;
@@ -124,6 +124,16 @@ private void setCategoria(String string) {
                 ", precio=" + precio +
                 ", categoria=" + categoria +
                 '}' + "\n";
+    }
+
+    @Override
+    protected String getNombreTabla() {
+        return "piezas";
+    }
+
+    @Override
+    protected Object createObjectFromResultSet(ResultSet resultSet) throws SQLException {
+        return null;
     }
 }
 

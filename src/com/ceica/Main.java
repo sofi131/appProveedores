@@ -95,7 +95,7 @@ public class Main {
 
         }while(! "5".equals(op));
     }
-
+//----------------------------------------editarPieza------------------------------
     private static void editarPieza(Scanner leer, AlmacenController almacen) {
 
     }
@@ -141,6 +141,7 @@ public class Main {
                 System.out.println("Categoría no válida");
             }
         }while (!categoriaValida);
+
         almacen.nuevaPieza(nombre,color,precio,categoria);
     }
     //-------------------------------------------subMenúProveedores------------------------------
@@ -184,7 +185,6 @@ public class Main {
                     }else{
                         System.out.println("No existe ningún proveedor con ese CIF");
                     }
-
                     break;
                 case "3":
                     System.out.println(almacen.verProveedores());
