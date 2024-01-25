@@ -17,7 +17,7 @@ public class AlmacenController {
     /**
      * Listas dentro del AlmacénController
      */
-    //vacío -> constructor almacén que vamos llenando
+    //vacío -> constructor almacén que vamos llenando --- nos vamos a tener poner en ese código QUITAR QUITAR
     public AlmacenController() {
         proveedorList = new ArrayList<>();
         pedidoList = new ArrayList<>();
@@ -25,10 +25,14 @@ public class AlmacenController {
         //esto es irrelevante y se leerá desde la bd.
         categorias = new ArrayList<>();
         proveedorList=Proveedor.getProveedores();
-        categorias.add(new Categoria(1, "pequeño"));
-        categorias.add(new Categoria(2, "mediano"));
-        categorias.add(new Categoria(3, "grande"));
+        //esto se tiene que meter en otro lado
+//        categorias.add(new Categoria(1, "pequeño"));
+//        categorias.add(new Categoria(2, "mediano"));
+//        categorias.add(new Categoria(3, "grande"));
     }
+
+    //------------------------------------aquí hay que borrar los de antes------------
+
 
     /**
      * @param cif       cif
